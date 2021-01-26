@@ -19,7 +19,7 @@ namespace progetto_pcto
         {
             InitializeComponent();
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             List<string> Elecantanti = new List<string>();
