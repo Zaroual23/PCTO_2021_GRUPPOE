@@ -12,7 +12,7 @@ namespace progetto_pcto
         {
             public string nome { get; set; }
             public string luogo { get; set; }
-            //public DateTime data { get; set; }
+            public DateTime data { get; set; }
             public string canzoni { get; set; }
 
         }

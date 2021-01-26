@@ -8,3 +8,13 @@ C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progett
 C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CoreCompileInputs.cache
 C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.exe
 C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.pdb
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\progetto pcto.exe.config
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\progetto pcto.exe
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\progetto pcto.pdb
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csprojAssemblyReference.cache
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto_pcto.Form1.resources
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto_pcto.Properties.Resources.resources
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.GenerateResource.cache
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CoreCompileInputs.cache
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.exe
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.pdb
