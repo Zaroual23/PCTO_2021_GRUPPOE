@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
-
-
+using System.Reflection;
+using System.Collections;
 
 namespace progetto_pcto
 {
@@ -22,6 +22,14 @@ namespace progetto_pcto
         
         private void button1_Click(object sender, EventArgs e)
         {
+            ArrayList ColorList = new ArrayList();
+            Type colorType = typeof(System.Drawing.Color);
+            PropertyInfo[] propInfoList = colorType.GetProperties(BindingFlags.Static |
+                                          BindingFlags.DeclaredOnly | BindingFlags.Public);
+            foreach (PropertyInfo a in propInfoList)
+            {
+                this.comboBox2.Items.Add(a.Name);
+            }
             List<string> Elecantanti = new List<string>();
             List<string> Elecanzoni = new List<string>();
             List<string> Elecitta = new List<string>();
