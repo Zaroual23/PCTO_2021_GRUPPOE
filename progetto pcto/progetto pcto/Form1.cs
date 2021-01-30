@@ -33,6 +33,7 @@ namespace progetto_pcto
             }
             var cantante = comboBox1.Text;
 
+            #region
             HttpClient clint = new HttpClient();
             clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
             HttpResponseMessage risposta = clint.GetAsync("1.0/search/artists").Result;
@@ -55,6 +56,9 @@ namespace progetto_pcto
             clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
             HttpResponseMessage resp = clint.GetAsync("1.0/search/{mbid}/setlists").Result;
             var datac = risposta.Content.ReadAsStringAsync().Result;
+            #endregion
+
+
         }
 
     }

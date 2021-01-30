@@ -18,3 +18,6 @@ C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto
 C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CoreCompileInputs.cache
 C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.exe
 C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.pdb
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\nunit.framework.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\nunit.framework.xml
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CopyComplete
