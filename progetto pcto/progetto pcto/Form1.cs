@@ -36,12 +36,25 @@ namespace progetto_pcto
             HttpClient clint = new HttpClient();
             clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
             HttpResponseMessage risposta = clint.GetAsync("1.0/search/artists").Result;
-
             var artista = risposta.Content.ReadAsStringAsync().Result;  
 
             //comboBox1.Text = risposta.ToString();
             dataGridView1.DataSource = artista;
 
+            HttpClient c = new HttpClient();
+            clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
+            HttpResponseMessage r = clint.GetAsync("1.0/search/cities").Result;
+            var city = risposta.Content.ReadAsStringAsync().Result;
+
+            HttpClient cl = new HttpClient();
+            clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
+            HttpResponseMessage re = clint.GetAsync("1.0/search/setlists").Result;
+            var song = risposta.Content.ReadAsStringAsync().Result;
+
+            HttpClient clie = new HttpClient();
+            clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
+            HttpResponseMessage resp = clint.GetAsync("1.0/search/{mbid}/setlists").Result;
+            var datac = risposta.Content.ReadAsStringAsync().Result;
         }
 
     }
