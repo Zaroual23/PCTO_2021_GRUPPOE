@@ -20,7 +20,7 @@ namespace progetto_pcto
             InitializeComponent();
         }
         
-        private void button1_Click(object sender, EventArgs e)
+        private void btncerca_Click(object sender, EventArgs e)
         {
             List<string> Elecantanti = new List<string>();
             List<string> Elecanzoni = new List<string>();
@@ -44,5 +44,6 @@ namespace progetto_pcto
 
         }
 
+       
     }
 }
