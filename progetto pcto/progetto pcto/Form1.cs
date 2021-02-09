@@ -28,7 +28,7 @@ namespace progetto_pcto
                                           BindingFlags.DeclaredOnly | BindingFlags.Public);
             foreach (PropertyInfo a in propInfoList)
             {
-                this.comboBox2.Items.Add(a.Name);
+                //this.comboBox2.Items.Add(a.Name);
             }
             List<string> Elecantanti = new List<string>();
             List<string> Elecanzoni = new List<string>();
