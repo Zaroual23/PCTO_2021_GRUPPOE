@@ -1,0 +1,17 @@
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.abstractions.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.runner.visualstudio.testadapter.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.runner.reporters.net452.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.runner.utility.net452.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\XUnitTestProject1.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\XUnitTestProject1.pdb
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.assert.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.core.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\bin\Debug\net472\xunit.execution.desktop.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.csprojAssemblyReference.cache
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.AssemblyInfoInputs.cache
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.AssemblyInfo.cs
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.csproj.CoreCompileInputs.cache
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.csproj.CopyComplete
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\XUnitTestProject1\obj\Debug\net472\XUnitTestProject1.pdb

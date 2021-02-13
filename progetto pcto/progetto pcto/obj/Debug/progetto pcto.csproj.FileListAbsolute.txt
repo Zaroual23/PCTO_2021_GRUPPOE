@@ -21,3 +21,11 @@ C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto
 C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\nunit.framework.dll
 C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\nunit.framework.xml
 C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CopyComplete
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.abstractions.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.assert.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.core.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.execution.desktop.dll
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.abstractions.xml
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.assert.xml
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.core.xml
+C:\Users\birolini.17464\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\xunit.execution.desktop.xml
