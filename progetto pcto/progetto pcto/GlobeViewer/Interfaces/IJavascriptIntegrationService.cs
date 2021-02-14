@@ -33,10 +33,27 @@ namespace GlobeViewer.Interfaces
         }
     }
 
+    /// <summary>
+    /// Handles communication between .NET and Javascript
+    /// </summary>
     interface IJavascriptIntegrationService
     {
+        /// <summary>
+        /// Event triggered when any marker on the globe is clicked
+        /// </summary>
         event MarkerClickedEventHandler MarkerClicked;
+
+        /// <summary>
+        /// Call a procedure (no return value)
+        /// </summary>
+        /// <param name="expression"></param>
         void CallProcedure(string expression);
+
+        /// <summary>
+        /// Call a function (returns a "JavascriptResponse")
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         JavascriptResponse CallFunction(string expression);
     }
 }

@@ -6,30 +6,21 @@ using System.Threading.Tasks;
 
 namespace GlobeViewer.Interfaces
 {
-    public struct Coordinates
-    {
-        public string X { get; set; }
-        public string Y { get; set; }
-        static Random random = new Random();
-
-        public Coordinates(string x, string y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public static Coordinates Random()
-        {
-            string latitude = random.Next(-90, 90).ToString();
-            string longitude = random.Next(-180, 180).ToString();
-            return new Coordinates(longitude, latitude);
-        }
-    }
-
+    /// <summary>
+    /// "GlobeViewer" application main class
+    /// </summary>
     public interface IGlobeViewer : IDisposable
     {
-        void LoadMarkers(IList<string> locations);
-        void LoadMarkers(IDictionary<string, Coordinates> locations);
+        /// <summary>
+        /// Load markers on the globe
+        /// </summary>
+        /// <param name="locations">List of tuples each one cointaining name and coordinates for a new marker</param>
+        void LoadMarkers(IList<(string Name, string X, string Y)> locations);
+
+        /// <summary>
+        /// Bind event handler to handle a "MarkerClickedEvent"
+        /// </summary>
+        /// <param name="procedure">delegate with a void (object, string) signature</param>
         void BindMarkerClickedEvent(MarkerClickedEventHandler procedure);
     }
 }
