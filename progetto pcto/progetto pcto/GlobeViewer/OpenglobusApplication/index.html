@@ -39,10 +39,7 @@
 				var pickingObject = e.pickingObject;
 				var name = pickingObject.properties.name
 				window['boundEventHandler']['raiseEvent']("MarkerClick", name)
-				const DIST = 100;
-				let viewPoi = new LonLat(e.pickingObject._lonlat.lon, e.pickingObject._lonlat.lat, 3039);
-				let ell = globe.planet.ellipsoid;
-				globe.planet.camera.flyDistance(ell.lonLatToCartesian(viewPoi), DIST);
+				globe.planet.flyLonLat(new LonLat(e.pickingObject._lonlat.lon, e.pickingObject._lonlat.lat, 1000))
 			});
 
 			pointLayer.events.on("lup", function (e) {
