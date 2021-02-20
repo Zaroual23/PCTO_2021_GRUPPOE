@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GlobeViewer.Interfaces;
 using CefSharp;
 using CefSharp.WinForms;
+using System.Windows.Forms;
 
 namespace GlobeViewer.Classes
 {
@@ -14,6 +15,7 @@ namespace GlobeViewer.Classes
         public event MarkerClickedEventHandler MarkerClicked;
         private readonly JavascriptEventHandler eventHandler = default(JavascriptEventHandler);
         private readonly ChromiumWebBrowser browser = default(ChromiumWebBrowser);
+        private TaskCompletionSource<bool> canExecuteJavascript = new TaskCompletionSource<bool>();
 
         /// <summary>
         /// Initializes the Javascript integration service
@@ -21,11 +23,20 @@ namespace GlobeViewer.Classes
         /// <param name="browser">Browser that integrates the Javascript integration service</param>
         public JavascriptIntegrationService(ChromiumWebBrowser browser)
         {
+            this.browser = browser ?? throw new ArgumentNullException("'browser' parameter can't be null"); ;
+
             //Setting up Javascript event handling
             eventHandler = new JavascriptEventHandler();
             eventHandler.EventArrived += JavascriptEventHandlerEventArrived;
-            this.browser = browser;
             browser.JavascriptObjectRepository.Register("boundEventHandler", eventHandler, true, BindingOptions.DefaultBinder);
+            browser.FrameLoadEnd += (sender, args) =>
+            {
+                //Wait for the MainFrame to finish loading
+                if (args.Frame.IsMain)
+                {
+                    canExecuteJavascript.SetResult(true);
+                }
+            };
         }
 
         /// <summary>
@@ -34,7 +45,10 @@ namespace GlobeViewer.Classes
         /// <param name="expression"></param>
         public void CallProcedure(string expression)
         {
-            browser.ExecuteScriptAsync(expression);
+            if (expression == null)
+                throw new ArgumentException("'expression' parameter can't be null");
+
+            var _ = SendDataAsync(expression).Status;
         }
 
         /// <summary>
@@ -44,6 +58,9 @@ namespace GlobeViewer.Classes
         /// <returns></returns>
         public JavascriptResponse CallFunction(string expression)
         {
+            if (expression == null)
+                throw new ArgumentException("'expression' parameter can't be null");
+
             return GetDataAsync(expression).Result;
         }
 
@@ -59,7 +76,14 @@ namespace GlobeViewer.Classes
         //Calls Javascript function and waits to get a return value, asynchronously
         async Task<JavascriptResponse> GetDataAsync(string expression)
         {
+            await canExecuteJavascript.Task;
             return await browser.EvaluateScriptAsync(expression);
+        }
+
+        async Task SendDataAsync(string expression)
+        {
+            await canExecuteJavascript.Task;
+            browser.ExecuteScriptAsync(expression);
         }
 
         //Invokes the public "MarkerClicked"

@@ -28,9 +28,10 @@ namespace GlobeViewer.Classes
         /// <param name="panel">Panel used as a container for the "ChromiumWebBrowser" CefSharp control</param>
         public GlobeViewer(Panel panel)
         {
+            if (panel == null)
+                throw new ArgumentException("'panel' argument can't be null");
 
             string openglobusApplicationUrl = default(string);
-
 
             //Getting a suitable HTTP server running the "OpenglobusApplication" 
             if (new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator))
@@ -64,11 +65,21 @@ namespace GlobeViewer.Classes
         /// <param name="locations">List of tuples each one cointaining name and coordinates for a new marker</param>
         public void LoadMarkers(IList<(string Name, string X, string Y)> locations)
         {
+            List<(string Name, string X, string Y)> currentlyLoadedMarkers = new List<(string Name, string X, string Y)>();
+
             //Preparing the parameter required by the "loadMarkers" Javascript procedure
             string markersList = "[";
 
             foreach (var location in locations)
             {
+                if (double.Parse(location.X) < -180 || double.Parse(location.X.Replace('.', ',')) > 180)
+                    throw new ArgumentOutOfRangeException("X (longitude) should be a value between -180 and 180");
+                if (double.Parse(location.Y) < -90 || double.Parse(location.Y.Replace('.', ',')) > 90)
+                    throw new ArgumentOutOfRangeException("Y (latitude) should be a value between -90 and 90");
+
+                if (currentlyLoadedMarkers.Contains(location))
+                    continue;
+
                 markersList += "{name: '";
                 markersList += location.Name;
                 markersList += "', latitude: ";
@@ -76,6 +87,8 @@ namespace GlobeViewer.Classes
                 markersList += ", longitude: ";
                 markersList += location.X;
                 markersList += "}, ";
+
+                currentlyLoadedMarkers.Add(location);
             }
 
             markersList += "]";
@@ -90,7 +103,7 @@ namespace GlobeViewer.Classes
         /// <param name="procedure">delegate with a void (object, string) signature</param>
         public void BindMarkerClickedEvent(MarkerClickedEventHandler procedure)
         {
-            javascriptIntegrationService.MarkerClicked += procedure;
+            javascriptIntegrationService.MarkerClicked += procedure ?? throw new ArgumentException("'procedure' argument can't be null"); ;
         }
 
         public void Dispose()
