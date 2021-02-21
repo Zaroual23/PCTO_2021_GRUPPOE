@@ -11,7 +11,16 @@ namespace progetto_pcto
 {
     class resthelper
     {
-        private static readonly string Baseurl = "https://api.setlist.fm/rest/1.0/search/artists?artist=";
+        public class Product
+        {
+            public string Artist { get; set; }
+            public string Place { get; set; }
+            public DateTime Day { get; set; }
+            public string Songs { get; set; }
+        }
+        //apikey=TDpswW5K3jP46t26H1XXtPzZRv1xwgX2nGxo
+
+        private static readonly string Baseurl = "https://api.setlist.fm/rest/1.0/search/setlist?artist=";
         public static string BeautyJson(string Jsonstr)
         {
             JToken parseJson = JToken.Parse(Jsonstr);
