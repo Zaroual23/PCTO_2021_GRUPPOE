@@ -11,7 +11,7 @@ namespace progetto_pcto
 {
     class resthelper
     {
-        private static readonly string Baseurl = "https://reqres.in/api/";
+        private static readonly string Baseurl = "https://api.setlist.fm/rest/1.0/search/setlists";
         public static string BeautyJson(string Jsonstr)
         {
             JToken parseJson = JToken.Parse(Jsonstr);
