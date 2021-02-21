@@ -11,7 +11,7 @@ namespace progetto_pcto
 {
     class resthelper
     {
-        private static readonly string Baseurl = "https://api.setlist.fm/rest/1.0/search/setlists";
+        private static readonly string Baseurl = "https://api.setlist.fm/rest/1.0/search/artists?artist=";
         public static string BeautyJson(string Jsonstr)
         {
             JToken parseJson = JToken.Parse(Jsonstr);
@@ -21,7 +21,7 @@ namespace progetto_pcto
         {
             using (HttpClient client = new HttpClient())
             {
-                using (HttpResponseMessage res = await client.GetAsync(Baseurl + "users/"+ id))
+                using (HttpResponseMessage res = await client.GetAsync(Baseurl + id))
                 {
                     using (HttpContent content = res.Content)
                     {
