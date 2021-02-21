@@ -18,3 +18,16 @@ C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto
 C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CoreCompileInputs.cache
 C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.exe
 C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.pdb
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\progetto pcto.exe.config
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\progetto pcto.exe
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\progetto pcto.pdb
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\Newtonsoft.Json.dll
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\Newtonsoft.Json.xml
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csprojAssemblyReference.cache
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto_pcto.Form1.resources
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto_pcto.Properties.Resources.resources
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.GenerateResource.cache
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CoreCompileInputs.cache
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CopyComplete
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.exe
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.pdb

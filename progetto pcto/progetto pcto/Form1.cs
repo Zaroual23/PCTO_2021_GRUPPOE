@@ -20,27 +20,10 @@ namespace progetto_pcto
             InitializeComponent();
         }
         
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            List<string> Elecantanti = new List<string>();
-            List<string> Elecanzoni = new List<string>();
-            List<string> Elecitta = new List<string>();
-
-            if (comboBox1.Text== "")
-            {
-                MessageBox.Show("inserire un cantante");
-                return;
-            }
-            var cantante = comboBox1.Text;
-
-            HttpClient clint = new HttpClient();
-            clint.BaseAddress = new Uri("https://api.setlist.fm/docs/");
-            HttpResponseMessage risposta = clint.GetAsync("1.0/search/artists").Result;
-
-            var artista = risposta.Content.ReadAsStringAsync().Result;  
-
-            //comboBox1.Text = risposta.ToString();
-            dataGridView1.DataSource = artista;
+            var response = await resthelper.Get(textBox1.Text);
+            richTextBox1.Text=resthelper.BeautyJson(response);
 
         }
 
