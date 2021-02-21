@@ -21,7 +21,7 @@ namespace progetto_pcto
         {
             using (HttpClient client = new HttpClient())
             {
-                using (HttpResponseMessage res = await client.GetAsync(Baseurl + "users/" + id))
+                using (HttpResponseMessage res = await client.GetAsync(Baseurl + "users/"+ id))
                 {
                     using (HttpContent content = res.Content)
                     {
