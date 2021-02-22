@@ -31,3 +31,6 @@ C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\ob
 C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CopyComplete
 C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.exe
 C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.pdb
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Zaroual.17224\Documents\GitHub\PCTO_2021_GRUPPOE\progetto pcto\progetto pcto\obj\Debug\progetto pcto.csproj.CopyComplete
