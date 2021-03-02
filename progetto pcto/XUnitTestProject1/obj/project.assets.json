@@ -5622,19 +5622,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\birolini.17464\\.nuget\\packages\\": {}
+    "C:\\Users\\Alessia\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\birolini.17464\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
+      "projectUniqueName": "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
       "projectName": "XUnitTestProject1",
-      "projectPath": "C:\\Users\\birolini.17464\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
-      "packagesPath": "C:\\Users\\birolini.17464\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\birolini.17464\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\obj\\",
+      "projectPath": "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
+      "packagesPath": "C:\\Users\\Alessia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\birolini.17464\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alessia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5646,7 +5650,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5658,7 +5661,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -5696,7 +5698,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
