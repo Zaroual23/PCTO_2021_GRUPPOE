@@ -9,53 +9,25 @@ using static SpotifyAPI.Web.Scopes;
 
 namespace Example.CLI.PersistentConfig
 {
-    public class PctoSpotifyClient
+    public class SpotifyClass
     {
-        public interface ITrack
-        {
-            string nome { get; }
-            string album { get; }
-            string artista { get; }
-        }
-        public class Track : ITrack
-        {
-            public string nome { get; }
-            public string album { get; }
-            public string artista { get; }
-
-            public Track(string p_nome, string p_album, string p_artista)
-            {
-                if (string.IsNullOrEmpty(p_nome)) throw new ArgumentNullException("Il nome non può essere vuoto");
-                if (string.IsNullOrEmpty(p_album)) throw new ArgumentNullException("L'album non può essere vuoto");
-                if (string.IsNullOrEmpty(p_artista)) throw new ArgumentNullException("L'artista non può essere vuoto");
-
-                this.nome = p_nome.ToLower();
-                this.album = p_album.ToLower();
-                this.artista = p_artista.ToLower();
-            }
-        }
-
-        public async Task InitializeAsync()
-        {
-            AppDomain.CurrentDomain.ProcessExit += (sender, e) => Exiting();
-
-            if (File.Exists(CredentialsPath))
-            {
-                Start();
-            }
-            else
-            {
-                await StartAuthentication();
-            }
-        }
-
         public const string CredentialsPath = "credentials";
         private readonly string clientId = "fa3f6d3824f6436bbe0508b85c84b39c";
         private readonly EmbedIOAuthServer _server = new EmbedIOAuthServer(new Uri("http://localhost:5000/callback"), 5000);
 
         private SpotifyClient spotify;
 
-        private void Exiting() => Console.CursorVisible = true;
+        public SpotifyClass()
+        {
+            if (File.Exists(CredentialsPath))
+            {
+                Start();
+            }
+            else
+            {
+                StartAuthentication();
+            }
+        }
 
         private void Start()
         {
@@ -72,19 +44,21 @@ namespace Example.CLI.PersistentConfig
             _server.Dispose();
         }
 
-        private async Task StartAuthentication()
+        private void StartAuthentication()
         {
             var (verifier, challenge) = PKCEUtil.GenerateCodes();
 
-            await _server.Start();
+            Task.WaitAll(_server.Start());
+
             _server.AuthorizationCodeReceived += async (sender, response) =>
             {
                 await _server.Stop();
-                PKCETokenResponse token = await new OAuthClient().RequestToken(
+
+                PKCETokenResponse dataTask = await new OAuthClient().RequestToken(
                   new PKCETokenRequest(clientId, response.Code, _server.BaseUri, verifier)
                 );
 
-                File.WriteAllText(CredentialsPath, JsonConvert.SerializeObject(token));
+                File.WriteAllText(CredentialsPath, JsonConvert.SerializeObject(dataTask));
                 File.SetAttributes(CredentialsPath, FileAttributes.ReadOnly);
                 Start();
             };
@@ -107,58 +81,78 @@ namespace Example.CLI.PersistentConfig
             }
         }
 
-        private async Task<string> findTrackId(ITrack item)
+        public class Track
         {
-            var searchRequest = new SearchRequest(SearchRequest.Types.Track, $"album:{item.album} artist:{item.artista} track:{item.nome}");
+            public string nome { get; }
+            public string album { get; }
+            public string artista { get; }
 
-            SearchResponse response = default;
-
-            response = await spotify.Search.Item(searchRequest);
-
-            if (response.Tracks.Items.Count < 1) return string.Empty;
-            if (response.Tracks.Items.Count > 1)
+            public Track(string p_nome, string p_album, string p_artista)
             {
-                int num = response.Tracks.Items.Count;
-                Random rnd = new Random();
-                num = rnd.Next(1, num + 1);
+                if (string.IsNullOrEmpty(p_nome)) throw new ArgumentNullException("Il nome non può essere vuoto");
+                if (string.IsNullOrEmpty(p_album)) throw new ArgumentNullException("L'album non può essere vuoto");
+                if (string.IsNullOrEmpty(p_artista)) throw new ArgumentNullException("L'artista non può essere vuoto");
 
-                return response.Tracks.Items[num].Id;
+                this.nome = p_nome.ToLower();
+                this.album = p_album.ToLower();
+                this.artista = p_artista.ToLower();
             }
-
-            return string.Empty;
         }
 
-        public async Task createPlaylist(string name, List<ITrack> canzoni = null)
+        public async Task<string> findTrackUri(Track item)
         {
+            bool ok = false;
+            string b = string.Empty;
+            while (!ok)
+            {
+                if (spotify != null)
+                {
+                    var a = await spotify.Search.Item(new SearchRequest(SearchRequest.Types.Track, $"album:{item.album} artist:{item.artista} track:{item.nome}"));
+                    ok = true;
+                    b = a.Tracks.Items[0].Uri;
+                }
+
+            }
+            if (b != null)
+                return b;
+
+            return "";
+        }
+
+        public async Task createPlaylist(string name, List<Track> canzoni = null)
+        {
+            if (spotify == null) throw new Exception("Devi eseguire l'autenticazione prima di chiamare questo metodo");
+
             if (string.IsNullOrEmpty(name)) name = "default";
 
             var user = await spotify.UserProfile.Current();
             var playlist = await spotify.Playlists.Create(user.Id, new PlaylistCreateRequest(name));
 
-            if (canzoni != null)
+            var songs = new List<string>();
+
+            foreach (var i in canzoni)
             {
-                var songs = new List<string>();
-
-                foreach (var i in canzoni)
-                {
-                    var id = await findTrackId(i);
-                    if (!string.IsNullOrEmpty(id)) songs.Add(id);
-                }
-
-                var addItemRequest = new PlaylistAddItemsRequest(songs);
-                var a = await spotify.Playlists.AddItems(playlist.Id, addItemRequest);
+                var id = await findTrackUri(i);
+                if (!string.IsNullOrEmpty(id)) songs.Add(id);
             }
+
+            await spotify.Playlists.AddItems(playlist.Id, new PlaylistAddItemsRequest(songs));
         }
     }
 
     public class Program
     {
-        public static async Task Main()
+        public static void Main()
         {
-            var client = new PctoSpotifyClient();
-            await client.InitializeAsync();
+            var client = new SpotifyClass(); // Chiamare questa in una funzione separata perché è asincrona
 
-            Console.ReadKey();
+
+            // dopo aver eseguito l'autenticazione si può chiamare questa funzione
+            Task.WaitAll(client.createPlaylist("PrimaPlaylist", new List<SpotifyClass.Track>()
+            {
+                new SpotifyClass.Track("don't stop th party", "the beginning", "black eyed peas"),
+                new SpotifyClass.Track("Godzilla", "Music to be murdered by", "Eminem")
+            }));
         }
     }
 }
