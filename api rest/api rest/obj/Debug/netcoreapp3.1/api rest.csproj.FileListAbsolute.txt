@@ -1,0 +1,16 @@
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\api rest.exe
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\api rest.deps.json
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\api rest.runtimeconfig.json
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\api rest.runtimeconfig.dev.json
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\api rest.dll
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\api rest.pdb
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\bin\Debug\netcoreapp3.1\SetlistNet.dll
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.csprojAssemblyReference.cache
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.AssemblyInfoInputs.cache
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.AssemblyInfo.cs
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.csproj.CoreCompileInputs.cache
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.csproj.CopyComplete
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.dll
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.pdb
+C:\Users\walid\Documents\GitHub\PCTO_2021_GRUPPOE\api rest\api rest\obj\Debug\netcoreapp3.1\api rest.genruntimeconfig.cache

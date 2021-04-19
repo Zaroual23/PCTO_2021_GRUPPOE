@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "e6Z5ySmtOy14GrFT6rkjx5PsCSXWyEk96QNEYKbqRFTTu9ZcK4QZJBsCW1NOODj+isi9b/2eePLR2YTgnzQBFQ==",
+  "dgSpecHash": "7Yo7h1woW8/5WqdkFyGP3ZvkWeng4Vln5lPyIaRZi1eLZHVdU9xHdxwKwbBp0VTkJTOR6yJqUKCcZGoLqjEvbA==",
   "success": true,
   "projectFilePath": "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\api rest\\api rest\\api rest.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\walid\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\walid\\.nuget\\packages\\setlistnet\\1.1.0\\setlistnet.1.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -6,4 +6,8 @@
     <RootNamespace>api_rest</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SetlistNet" Version="1.1.0" />
+  </ItemGroup>
+
 </Project>
