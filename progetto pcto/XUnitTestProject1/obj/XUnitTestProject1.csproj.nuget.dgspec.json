@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj": {}
+    "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj": {
+    "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
+        "projectUniqueName": "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
         "projectName": "XUnitTestProject1",
-        "projectPath": "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
-        "packagesPath": "C:\\Users\\Alessia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alessia\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\obj\\",
+        "projectPath": "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\XUnitTestProject1.csproj",
+        "packagesPath": "C:\\Users\\walid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\progetto pcto\\XUnitTestProject1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alessia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\walid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
@@ -77,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
