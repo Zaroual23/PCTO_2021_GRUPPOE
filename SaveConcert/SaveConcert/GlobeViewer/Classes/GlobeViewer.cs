@@ -19,6 +19,7 @@ namespace GlobeViewer.Classes
         private readonly ChromiumWebBrowser browser = default(ChromiumWebBrowser);
         private readonly IJavascriptIntegrationService javascriptIntegrationService = default(IJavascriptIntegrationService);
         private readonly IHttpServer httpServer = default(IHttpServer);
+        private readonly IGeocoderAPIManager geocoder = default(IGeocoderAPIManager);
         private const string publicOpenglobusApplicationUrl = "http://lmschool.altervista.org/SaveConcert";
         private bool disposed;
 
@@ -55,6 +56,9 @@ namespace GlobeViewer.Classes
             //Initializing the Javascript integration service for communication between .NET and Javascript 
             javascriptIntegrationService = new JavascriptIntegrationService(browser);
 
+            //Initializing the geocoder API manager
+            geocoder = new GeocoderAPIManager();
+
 
             panel.Controls.Add(browser);
         }
@@ -72,9 +76,20 @@ namespace GlobeViewer.Classes
 
             foreach (var location in locations)
             {
-                if (double.Parse(location.X) < -180 || double.Parse(location.X.Replace('.', ',')) > 180)
+                string latitude = location.Y;
+                string longitude = location.X;
+
+                //Try to geocode the location to get more accurate coordinates
+                (bool state, string x, string y) result = geocoder.Geocode(location.Name);
+                if (result.state)
+                {
+                    longitude = result.x;
+                    latitude = result.y;
+                }
+
+                if (double.Parse(longitude.Replace('.', ',')) < -180 || double.Parse(longitude.Replace('.', ',')) > 180)
                     throw new ArgumentOutOfRangeException("X (longitude) should be a value between -180 and 180");
-                if (double.Parse(location.Y) < -90 || double.Parse(location.Y.Replace('.', ',')) > 90)
+                if (double.Parse(latitude.Replace('.', ',')) < -90 || double.Parse(latitude.Replace('.', ',')) > 90)
                     throw new ArgumentOutOfRangeException("Y (latitude) should be a value between -90 and 90");
 
                 if (currentlyLoadedMarkers.Contains(location))
@@ -83,9 +98,9 @@ namespace GlobeViewer.Classes
                 markersList += "{name: '";
                 markersList += location.Name;
                 markersList += "', latitude: ";
-                markersList += location.Y;
+                markersList += latitude;
                 markersList += ", longitude: ";
-                markersList += location.X;
+                markersList += longitude;
                 markersList += "}, ";
 
                 currentlyLoadedMarkers.Add(location);

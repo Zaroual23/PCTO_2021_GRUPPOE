@@ -32,8 +32,8 @@ namespace progetto_pcto
 
             foreach (string i in placesName)
             {
-                locations.Add((i, "12.646361", "42.504154"));
-                locations.Add(("Germany", "10.4541194", "51.1642292"));
+                //locations.Add((i, "12.646361", "42.504154"));
+                locations.Add(("Compaq Center", "0", "0"));
             }
 
             gv.LoadMarkers(locations);
