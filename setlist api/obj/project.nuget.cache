@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E5WQJ7nQ6XPrLjFTGhCBNDnm7QiM4tC7NQvhFO3rXYBVSW+KpVF54C2AlQqnTKBD4aMoWlU73lCznTbfTx/GFg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\walid\\Documents\\GitHub\\PCTO_2021_GRUPPOE\\setlist api\\SetlistNet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\walid\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

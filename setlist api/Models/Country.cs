@@ -3,7 +3,7 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents a country on earth.
+    /// Questa classe rappresenta un paese sulla terra.
     /// </summary>
     public class Country
     {

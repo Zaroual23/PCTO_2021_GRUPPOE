@@ -3,7 +3,7 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents coordinates of a point on the globe. Mostly used for <paramref name="Cities"/>.
+    /// Vengono rappresentate le coordinate di un punto sul globo <paramref name="Cities"/>.
     /// </summary>
     public class Coords
     {
@@ -16,7 +16,7 @@ namespace SetlistNet.Models
 
         #region Properties
         /// <summary>
-        /// Gets or sets the longitude part of the coordinates.
+        /// Gets o sets la parte della longitudine
         /// </summary>
         [JsonProperty(PropertyName = "long")]
         public double Longitude
@@ -32,7 +32,7 @@ namespace SetlistNet.Models
             }
         }
         /// <summary>
-        /// Gets or sets whether the "Longitude" property should be included in the output.
+        /// Gets o sets se la longitudine deve essere inclusa nell'output.
         /// </summary>
         public bool LongitudeSpecified
         {
@@ -46,7 +46,7 @@ namespace SetlistNet.Models
             }
         }
         /// <summary>
-        /// Gets or sets the latitude part of the coordinates.
+        /// Gets o sets la parte edlla latitudine
         /// </summary>
         [JsonProperty(PropertyName = "lat")]
         public double Latitude
@@ -62,7 +62,7 @@ namespace SetlistNet.Models
             }
         }
         /// <summary>
-        /// Gets or sets whether the "Latitude" property should be included in the output.
+        /// Gets o sets se la latitudine deve essere inclusa nell'output.
         /// </summary>
         public bool LatitudeSpecified
         {
@@ -78,9 +78,9 @@ namespace SetlistNet.Models
         #endregion
 
         /// <summary>
-        /// Returns latitude and longitude in the format "lat,long".
+        /// vengono restituite la longitudine e la latitudine con formato  "lat,long".
         /// </summary>
-        /// <returns>String representing latitude and longitude separated by comma.</returns>
+        /// <returns>lappresenta la longitudine e la latitudine separate da una virgola</returns>
         public override string ToString()
         {
             return string.Format("Latitude = {0}, Longitude = {1}", Latitude, Longitude);

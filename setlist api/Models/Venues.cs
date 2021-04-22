@@ -5,15 +5,15 @@ namespace SetlistNet.Models
 {
     [JsonObject]
     /// <summary>
-    /// A Result consisting of a list of artists.
+    /// Un risultato costituito da un elenco di sedi
     /// </summary>
-    public class Artists : ApiArrayResult<Artist>
+    public class Venues : ApiArrayResult<Venue>
     {
         /// <summary>
-        /// Gets or sets the list of artists.
+        /// Gets o sets l'eleenco delle sedi
         /// </summary>
-        [JsonProperty(PropertyName = "artist")]
-        internal List<Artist> Items
+        [JsonProperty(PropertyName = "venue")]
+        internal List<Venue> Items
         {
             get
             {

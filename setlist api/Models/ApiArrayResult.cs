@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This is an abstract class, that represents a set of items, returned by API
+    /// Questa è una classe astratta,che rappresenta un isneme di elementi,restituiti dall'api
     /// </summary>
     public abstract class ApiArrayResult<T> : IList<T>
     {
@@ -19,7 +19,7 @@ namespace SetlistNet.Models
         #endregion
 
         /// <summary>
-        /// Gets or sets the total amount of items matching the query.
+        /// Gets o sets la quantita totale dii elementi che corrispondono alla query
         /// </summary>
         [JsonProperty(PropertyName = "total")]
         public int Total
@@ -34,7 +34,7 @@ namespace SetlistNet.Models
             }
         }
         /// <summary>
-        /// Gets or sets current page.
+        /// Gets o sets della pagina corrente
         /// </summary>
         [JsonProperty(PropertyName = "page")]
         public int Page
@@ -49,7 +49,7 @@ namespace SetlistNet.Models
             }
         }
         /// <summary>
-        /// Gets or sets the amount of items you get per page.
+        /// Gets o sets la quantità di elementi che ottieni per pagina.
         /// </summary>
         [JsonProperty(PropertyName = "itemsPerPage")]
         public int ItemsPerPage
@@ -65,7 +65,7 @@ namespace SetlistNet.Models
         }
 
         /// <summary>
-        /// Gets or sets the property "type" of an object.
+        /// Gets o sets del tipo di un oggetto
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string ApiType
@@ -75,7 +75,7 @@ namespace SetlistNet.Models
         }
 
         /// <summary>
-        /// Gets the total amount of pages returned by API.
+        /// Gets delle pagine restituite dall'API
         /// </summary>
         public int TotalPages
         {

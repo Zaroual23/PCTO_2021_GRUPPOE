@@ -5,15 +5,15 @@ namespace SetlistNet.Models
 {
     [JsonObject]
     /// <summary>
-    /// A Result consisting of a list of countries.
+    /// Si riceve una lista di città
     /// </summary>
-    public class Countries : ApiArrayResult<Country>
+    public class Cities : ApiArrayResult<City>
     {
         /// <summary>
-        /// Gets or sets the list of countries.
+        /// Gets o sets della lista di città
         /// </summary>
-        [JsonProperty(PropertyName = "country")]
-        internal List<Country> Items
+        [JsonProperty(PropertyName = "cities")]
+        internal List<City> Items
         {
             get
             {

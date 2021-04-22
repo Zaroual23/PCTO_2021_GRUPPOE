@@ -3,7 +3,7 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents a user.
+    /// This class represents l'utente
     /// </summary>
     public class User
     {

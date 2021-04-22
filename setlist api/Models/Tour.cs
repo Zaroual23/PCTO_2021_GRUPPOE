@@ -7,7 +7,7 @@ namespace SetlistNet.Models
         private string _name;
 
         /// <summary>
-        /// Gets or sets the city's name, depending on the language valid values are e.g. "Mchen" or "Munich".
+        /// Gets o sets nome delle citta,  a seconda della lingua i valori validi sono ad es. "Mchen" o "Monaco di Baviera".
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name

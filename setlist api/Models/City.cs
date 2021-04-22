@@ -3,8 +3,8 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents a city where Venues are located. 
-    /// Most of the original city data was taken from <see cref="http://geonames.org"/>.
+    /// rappresenta una città in cui si trovano le sedi.
+    /// Dati città <see cref="http://geonames.org"/>.
     /// </summary>
     public class City
     {

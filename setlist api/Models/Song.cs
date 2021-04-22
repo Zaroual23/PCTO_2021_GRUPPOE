@@ -3,7 +3,7 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents a song that is part of a <paramref name="Set"/>.
+    /// rappresenta una canzone che fa parte del file <paramref name="Set"/>.
     /// </summary>
     public class Song
     {
@@ -79,9 +79,9 @@ namespace SetlistNet.Models
         #endregion
 
         /// <summary>
-        /// Returns the <paramref name="Name"/> propertu of the object.
+        ///Viene ricevuto <paramref name="Name"/> proprietà dell'oggetto.
         /// </summary>
-        /// <returns>A string that represents <paramref name="Name"/> property.</returns>
+        /// <returns>vengono rappresentate <paramref name="Name"/> property.</returns>
         public override string ToString()
         {
             return "Name = " + Name;

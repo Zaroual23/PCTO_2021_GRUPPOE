@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents a setlist. 
+    /// Questa classe rappresenta una setlist
     /// <para>
     /// Please remember that setlist.fm is a wiki, so there are different versions of the same setlist. 
     /// Thus, the best way to check whether two setlists are the same is to use <paramref name="VersioId"/>.

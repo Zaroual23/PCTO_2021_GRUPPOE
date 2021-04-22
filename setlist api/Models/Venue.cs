@@ -3,13 +3,12 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents a venue. It's usually the name of the venue and city combined. 
+    /// Questa classe rappresenta un luogo. Di solito è il nome del luogo e della città messi insieme.. 
     /// <para>See remarks for more info.</para>
     /// </summary>
     /// <remarks> 
-    /// Venues are places where concerts take place. 
-    /// They usually consist of a venue name and a city - but there are also some venues that do not have a city attached yet. 
-    /// In such a case, the city simply isn't set and the city and country may (but do not have to) be in the name.
+    /// I luoghi sono luoghi in cui si svolgono i concerti.
+    /// Di solito sono costituiti dal nome di un luogo e da una città, ma ci sono anche alcuni luoghi a cui non è ancora associata una città.
     /// </remarks>
     public class Venue
     {

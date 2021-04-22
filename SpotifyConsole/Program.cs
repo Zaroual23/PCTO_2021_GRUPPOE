@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Threading.Tasks;
 using System;
 using SpotifyAPI.Web.Auth;
@@ -27,6 +27,7 @@ namespace Example.CLI.PersistentConfig
             {
                 StartAuthentication();
             }
+           
         }
 
         private void Start()
@@ -144,15 +145,44 @@ namespace Example.CLI.PersistentConfig
     {
         public static void Main()
         {
-            var client = new SpotifyClass(); // Chiamare questa in una funzione separata perché è asincrona
-
-
-            // dopo aver eseguito l'autenticazione si può chiamare questa funzione
-            Task.WaitAll(client.createPlaylist("PrimaPlaylist", new List<SpotifyClass.Track>()
+            bool ok = true;
+            SpotifyClass client = null;
+            while (ok)
             {
-                new SpotifyClass.Track("don't stop th party", "the beginning", "black eyed peas"),
-                new SpotifyClass.Track("Godzilla", "Music to be murdered by", "Eminem")
-            }));
+                Console.WriteLine("1) Per eseguire l'autenticazione \n2) Per aggiungere le canzoni prestabilite \n3) Per uscire");
+                int a = int.Parse(Console.ReadLine());
+
+                switch (a)
+                {
+                    case 1:
+                        {
+                            client =  new SpotifyClass();
+                            break;
+                        }
+                    case 2:
+                        {
+                            if (client != null)
+                                Task.WaitAll(client.createPlaylist("Prova", new List<SpotifyClass.Track>()
+                            {
+                                new SpotifyClass.Track("don't stop th party", "the beginning", "black eyed peas"),
+                                new SpotifyClass.Track("Godzilla", "Music to be murdered by", "Eminem")
+                            }));
+                            else Console.WriteLine("Autenticati prima di aggiungere le canzoni");
+                            break;
+                        }
+                    case 3:
+                        {
+                            ok = false;
+                            Console.WriteLine("Arrivederci, prema un pulsante per uscire");
+                            Console.ReadKey();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
         }
     }
 }
