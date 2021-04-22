@@ -5,12 +5,12 @@ namespace SetlistNet.Models
 {
     [JsonObject]
     /// <summary>
-    /// A Result consisting of a list of venues.
+    /// Un risultato costituito da un elenco di sedi
     /// </summary>
     public class Venues : ApiArrayResult<Venue>
     {
         /// <summary>
-        /// Gets or sets the list of venues.
+        /// Gets o sets l'eleenco delle sedi
         /// </summary>
         [JsonProperty(PropertyName = "venue")]
         internal List<Venue> Items

@@ -5,12 +5,12 @@ namespace SetlistNet.Models
 {
     [JsonObject]
     /// <summary>
-    /// A Result consisting of a list of artists.
+    /// Viene restituito un elenco di artisti
     /// </summary>
     public class Artists : ApiArrayResult<Artist>
     {
         /// <summary>
-        /// Gets or sets the list of artists.
+        /// Gets o sets della lista di artisti.
         /// </summary>
         [JsonProperty(PropertyName = "artist")]
         internal List<Artist> Items

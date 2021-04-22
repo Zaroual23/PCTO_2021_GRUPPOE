@@ -3,9 +3,9 @@
 namespace SetlistNet.Models
 {
     /// <summary>
-    /// This class represents an artist. An artist is a musician or a group of musicians. 
-    /// Each artist has a definite Musicbrainz Identifier (MBID) with which the artist can be uniquely identified.
-    /// <para>See <seealso cref="http://wiki.musicbrainz.org/MBID"/> for more info about Musicbrainz ID.</para>
+    /// parresenta un artista 
+    /// Ogni artista ha un MBID definito con il quale l'artista viene identificato in modo univoco.
+    /// <para>seealso <seealso cref="http://wiki.musicbrainz.org/MBID"/> </para>
     /// </summary>
     public class Artist 
     {
