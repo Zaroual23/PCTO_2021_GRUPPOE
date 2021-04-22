@@ -153,6 +153,9 @@ namespace GlobeViewer.Classes
                 }
                 //Stopping the HTTP server if not null, so as not to leave running processes when the main process is closed
                 httpServer?.Stop();
+
+                //Disposing the geocoder if not null, to cache geocoded coordinates
+                geocoder?.Dispose();
             }
 
             disposed = true;
