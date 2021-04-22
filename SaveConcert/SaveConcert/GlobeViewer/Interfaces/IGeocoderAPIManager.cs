@@ -8,6 +8,8 @@ namespace GlobeViewer.Interfaces
 {
     interface IGeocoderAPIManager
     {
+        int RequestInterval { get; set; }
+        event Action ApiCallAvailable;
         (bool state, string x, string y) Geocode(string location);
     }
 }

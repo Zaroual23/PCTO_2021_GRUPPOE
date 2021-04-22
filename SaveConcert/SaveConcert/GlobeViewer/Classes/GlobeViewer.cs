@@ -57,7 +57,7 @@ namespace GlobeViewer.Classes
             javascriptIntegrationService = new JavascriptIntegrationService(browser);
 
             //Initializing the geocoder API manager
-            geocoder = new GeocoderAPIManager();
+            geocoder = new GeocoderAPIManager(requestInterval: 5);
 
 
             panel.Controls.Add(browser);
@@ -80,11 +80,18 @@ namespace GlobeViewer.Classes
                 string longitude = location.X;
 
                 //Try to geocode the location to get more accurate coordinates
-                (bool state, string x, string y) result = geocoder.Geocode(location.Name);
-                if (result.state)
+                try
                 {
-                    longitude = result.x;
-                    latitude = result.y;
+                    (bool state, string x, string y) result = geocoder.Geocode(location.Name);
+                    if (result.state)
+                    {
+                        longitude = result.x;
+                        latitude = result.y;
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
                 }
 
                 if (double.Parse(longitude.Replace('.', ',')) < -180 || double.Parse(longitude.Replace('.', ',')) > 180)
@@ -119,6 +126,15 @@ namespace GlobeViewer.Classes
         public void BindMarkerClickedEvent(MarkerClickedEventHandler procedure)
         {
             javascriptIntegrationService.MarkerClicked += procedure ?? throw new ArgumentException("'procedure' argument can't be null"); ;
+        }
+
+        /// <summary>
+        /// Bind event handler to handle a "ApiCallAvailableEvent"
+        /// </summary>
+        /// <param name="procedure">delegate with a void () signature</param>
+        public void BindApiCallAvailableEvent(Action procedure)
+        {
+            geocoder.ApiCallAvailable += procedure ?? throw new ArgumentException("'procedure' argument can't be null");
         }
 
         public void Dispose()

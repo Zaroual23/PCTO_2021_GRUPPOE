@@ -22,5 +22,11 @@ namespace GlobeViewer.Interfaces
         /// </summary>
         /// <param name="procedure">delegate with a void (object, string) signature</param>
         void BindMarkerClickedEvent(MarkerClickedEventHandler procedure);
+
+        /// <summary>
+        /// Bind event handler to handle a "ApiCallAvailableEvent"
+        /// </summary>
+        /// <param name="procedure">delegate with a void () signature</param>
+        void BindApiCallAvailableEvent(Action procedure);
     }
 }

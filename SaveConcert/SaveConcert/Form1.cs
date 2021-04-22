@@ -23,6 +23,10 @@ namespace progetto_pcto
             {
                 MessageBox.Show(location);
             });
+            gv.BindApiCallAvailableEvent(delegate ()
+            {
+                MessageBox.Show("Api call available");
+            });
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,10 +36,18 @@ namespace progetto_pcto
 
             foreach (string i in placesName)
             {
+                //locations.Add((i, "12.646361", "42.504154"));
                 locations.Add((i, "0", "0"));
             }
 
-            gv.LoadMarkers(locations);
+            try
+            {
+                gv.LoadMarkers(locations);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

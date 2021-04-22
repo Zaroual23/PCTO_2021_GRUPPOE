@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace progetto_pcto
 {
@@ -22,7 +23,7 @@ namespace progetto_pcto
             if (!new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator))
             {
                 ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = AppDomain.CurrentDomain.FriendlyName;
+                info.FileName = AppDomain.CurrentDomain.BaseDirectory + AppDomain.CurrentDomain.FriendlyName;
                 info.UseShellExecute = true;
                 info.Verb = "runas"; // Provides Run as Administrator
                 info.Arguments = "";
@@ -34,7 +35,7 @@ namespace progetto_pcto
                         Environment.Exit(0);
                     }
                 }
-                catch (System.ComponentModel.Win32Exception)
+                catch (System.ComponentModel.Win32Exception e)
                 {
 
                 }

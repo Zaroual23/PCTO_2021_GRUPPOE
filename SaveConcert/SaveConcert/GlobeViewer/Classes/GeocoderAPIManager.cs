@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GlobeViewer.Interfaces;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace GlobeViewer.Classes
 {
@@ -29,13 +30,24 @@ namespace GlobeViewer.Classes
         private Uri uri = default(Uri);
         private ApiUri apiUri = default(ApiUri);
 
-        public GeocoderAPIManager()
-        {
+        private DateTime lastQuery;
+        private IDictionary<string, (string, string)> cachedCoordinates;
 
+        public int RequestInterval { get; set; }
+        public event Action ApiCallAvailable;
+
+
+        public GeocoderAPIManager(int requestInterval=0)
+        {
+            RequestInterval = requestInterval;
+            cachedCoordinates = new Dictionary<string, (string, string)>();
         }
 
         public (bool state, string x, string y) Geocode(string location)
         {
+            if ((DateTime.Now - lastQuery).Seconds <= RequestInterval)
+                throw new Exception("Api call unavailable, request interval set to " + RequestInterval + " seconds beetween each call");
+
             string x = null;
             string y = null;
             bool state = false;
@@ -62,7 +74,15 @@ namespace GlobeViewer.Classes
                 state = true;
             }
 
+            lastQuery = DateTime.Now;
+            Task.Run(() => apiCallAvailableCountdown());
             return (state, x, y);
+        }
+
+        private void apiCallAvailableCountdown()
+        {
+            Thread.Sleep(RequestInterval * 1000);
+            ApiCallAvailable?.Invoke();
         }
     }
 }
