@@ -44,11 +44,6 @@ namespace GlobeViewer.Classes
         /// </summary>
         public int RequestInterval { get; set; }
 
-        /// <summary>
-        /// Event triggered when api call is available
-        /// </summary>
-        public event Action ApiCallAvailable;
-
         private bool disposed;
 
 
@@ -68,11 +63,8 @@ namespace GlobeViewer.Classes
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public (bool state, string x, string y) Geocode(string location)
+        public (bool state, string x, string y) Geocode(string location, (string x, string y) coordinatesToStoreInCache=default((string, string)))
         {
-            if ((DateTime.Now - lastQuery).Seconds <= RequestInterval)
-                throw new Exception("Api call unavailable, request interval set to " + RequestInterval + " seconds beetween each call");
-
             if (string.IsNullOrEmpty(location))
                 throw new ArgumentException("'location' argument can't be null");
 
@@ -91,13 +83,20 @@ namespace GlobeViewer.Classes
             else
             {
                 //If the location to geocode is not contained in the cache, the coordinates will be retrived from the geocoder api
-                
+
+                try
+                {
+                    Thread.Sleep(RequestInterval * 1000 - (DateTime.Now - lastQuery).Milliseconds);
+                } catch (ArgumentOutOfRangeException) { }
+
                 //Prepare and send the api request
                 apiUri.Query = location;
                 uri = new Uri(apiUri.ToString());
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
                 httpWebRequest.UserAgent = "SaveConcert";
                 WebResponse webResponse = httpWebRequest.GetResponse();
+                lastQuery = DateTime.Now;
+
 
                 //Interprer the api response
                 string apiResponse = "";
@@ -118,20 +117,10 @@ namespace GlobeViewer.Classes
                     cachedCoordinates[location] = (x, y);
                 }
 
-                //Starting the api request interval timer
-                lastQuery = DateTime.Now;
-                Task.Run(() => apiCallAvailableCountdown());
+                if (!string.IsNullOrEmpty(coordinatesToStoreInCache.x) && !string.IsNullOrEmpty(coordinatesToStoreInCache.y))
+                    cachedCoordinates[location] = (coordinatesToStoreInCache.x, coordinatesToStoreInCache.y);
             }
             return (state, x, y);
-        }
-
-        private void apiCallAvailableCountdown()
-        {
-            //Wait for the api call interval
-            Thread.Sleep(RequestInterval * 1000);
-
-            //Trigger the event to inform that the api can now be called
-            ApiCallAvailable?.Invoke();
         }
 
         private void cacheCoordinates()

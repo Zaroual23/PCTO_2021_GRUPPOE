@@ -15,18 +15,12 @@ namespace GlobeViewer.Interfaces
         /// Load markers on the globe
         /// </summary>
         /// <param name="locations">List of tuples each one cointaining name and coordinates for a new marker</param>
-        void LoadMarkers(IList<(string Name, string X, string Y)> locations);
+        void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, bool geocodeAlways);
 
         /// <summary>
         /// Bind event handler to handle a "MarkerClickedEvent"
         /// </summary>
         /// <param name="procedure">delegate with a void (object, string) signature</param>
         void BindMarkerClickedEvent(MarkerClickedEventHandler procedure);
-
-        /// <summary>
-        /// Bind event handler to handle a "ApiCallAvailableEvent"
-        /// </summary>
-        /// <param name="procedure">delegate with a void () signature</param>
-        void BindApiCallAvailableEvent(Action procedure);
     }
 }
