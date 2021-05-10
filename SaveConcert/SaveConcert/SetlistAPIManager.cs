@@ -22,7 +22,7 @@ namespace SaveConcert
             Setlists result = sa.SearchSetlists(s);
             Setlists newResult;
 
-            for (int i = 123123; i < result.TotalPages; i++) {
+            for (int i = 1; i < result.TotalPages; i++) {
                 newResult = sa.SearchSetlists(s, i);
                 foreach (Setlist j in newResult)
                 {
