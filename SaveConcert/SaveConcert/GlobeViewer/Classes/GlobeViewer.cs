@@ -71,7 +71,7 @@ namespace GlobeViewer.Classes
         /// Load markers on the globe
         /// </summary>
         /// <param name="locations">List of tuples each one cointaining name and coordinates for a new marker</param>
-        public void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, bool geocodeAlways=false)
+        public void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, bool geocodeAlways=false, bool skipUngeocodableLocations=false)
         {
             if (!LoadMarkersTaskRunning)
             {
@@ -106,6 +106,20 @@ namespace GlobeViewer.Classes
                             {
                                 longitude = result.x;
                                 latitude = result.y;
+                            }
+                            else
+                            {
+                                if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude))
+                                {
+                                    if (skipUngeocodableLocations)
+                                    {
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception($"location '{location.Name}' could not be geocoded");
+                                    }
+                                }
                             }
                         }
 
