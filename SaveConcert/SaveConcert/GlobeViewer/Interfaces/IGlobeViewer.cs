@@ -15,7 +15,7 @@ namespace GlobeViewer.Interfaces
         /// Load markers on the globe
         /// </summary>
         /// <param name="locations">List of tuples each one cointaining name and coordinates for a new marker</param>
-        void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, bool geocodeAlways=false, bool skipUngeocodableLocations=false);
+        void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, out IList<(string markerName, string Name, string X, string Y)> notGeocodedLocations);
 
         /// <summary>
         /// Bind event handler to handle a "MarkerClickedEvent"

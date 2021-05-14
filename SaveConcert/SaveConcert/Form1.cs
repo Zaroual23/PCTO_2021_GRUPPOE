@@ -53,7 +53,7 @@ namespace SaveConcert
                     }
                     try
                     {
-                        gv.LoadMarkers(locations, geocodeAlways: true);
+                        gv.LoadMarkers(locations, out var _);
                     }
                     catch (Exception ex)
                     {

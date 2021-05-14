@@ -21,11 +21,7 @@ namespace GlobeViewer.Classes
         private readonly IHttpServer httpServer = default(IHttpServer);
         private readonly IGeocoderAPIManager geocoder = default(IGeocoderAPIManager);
         private const string publicOpenglobusApplicationUrl = "http://lmschool.altervista.org/SaveConcert";
-        private bool LoadMarkersTaskRunning;
         private bool disposed;
-
-        public delegate void LoadMarkersTaskStateSwitchedEventHandler(object sender, bool state);
-        public event LoadMarkersTaskStateSwitchedEventHandler LoadMarkersTaskStateSwitched;
 
         /// <summary>
         /// Initializes the "GlobeViewer" application
@@ -71,86 +67,66 @@ namespace GlobeViewer.Classes
         /// Load markers on the globe
         /// </summary>
         /// <param name="locations">List of tuples each one cointaining name and coordinates for a new marker</param>
-        public void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, bool geocodeAlways=false, bool skipUngeocodableLocations=false)
+        public void LoadMarkers(IList<(string markerName, string Name, string X, string Y)> locations, out IList<(string markerName, string Name, string X, string Y)> notGeocodedLocations)
         {
-            if (!LoadMarkersTaskRunning)
+            List<(string markerName, string Name, string X, string Y)> currentlyLoadedMarkers = new List<(string markerName, string Name, string X, string Y)>();
+            notGeocodedLocations = new List<(string markerName, string Name, string X, string Y)>();
+
+            //Preparing the parameter required by the "loadMarkers" Javascript procedure
+            string markersList = "[";
+
+            foreach (var location in locations)
             {
-                Task.Run(() =>
+                if (string.IsNullOrEmpty(location.Name))
+                    throw new Exception("elements contained in 'locations' can't have null names");
+
+                string latitude = location.Y;
+                string longitude = location.X;
+
+                //Try to geocode the location if longitude or latitude is not provided
+                if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude))
                 {
-                    LoadMarkersTaskRunning = true;
-                    LoadMarkersTaskStateSwitched?.Invoke(this, true);
+                    (bool state, string x, string y) result;
+                    if (!string.IsNullOrEmpty(latitude) && !string.IsNullOrEmpty(longitude))
+                        result = geocoder.Geocode(location.Name, coordinatesToStoreInCache: (longitude, latitude));
+                    else
+                        result = geocoder.Geocode(location.Name);
 
-                    List<(string markerName, string Name, string X, string Y)> currentlyLoadedMarkers = new List<(string markerName, string Name, string X, string Y)>();
-
-                    //Preparing the parameter required by the "loadMarkers" Javascript procedure
-                    string markersList = "[";
-
-                    foreach (var location in locations)
+                    if (result.state)
                     {
-                        if (string.IsNullOrEmpty(location.Name))
-                            throw new Exception("elements contained in 'locations' can't have null names");
-
-                        string latitude = location.Y;
-                        string longitude = location.X;
-
-                        //Try to geocode the location if longitude or latitude is not provided or geocodeAlways is set to true
-                        if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude) || geocodeAlways)
-                        {
-                            (bool state, string x, string y) result;
-                            if (!string.IsNullOrEmpty(latitude) && !string.IsNullOrEmpty(longitude))
-                                result = geocoder.Geocode(location.Name, coordinatesToStoreInCache: (longitude, latitude));
-                            else
-                                result = geocoder.Geocode(location.Name);
-
-                            if (result.state)
-                            {
-                                longitude = result.x;
-                                latitude = result.y;
-                            }
-                            else
-                            {
-                                if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude))
-                                {
-                                    if (skipUngeocodableLocations)
-                                    {
-                                        continue;
-                                    }
-                                    else
-                                    {
-                                        throw new Exception($"location '{location.Name}' could not be geocoded");
-                                    }
-                                }
-                            }
-                        }
-
-                        if (double.Parse(longitude.Replace('.', ',')) < -180 || double.Parse(longitude.Replace('.', ',')) > 180)
-                            throw new ArgumentOutOfRangeException("X (longitude) should be a value between -180 and 180");
-                        if (double.Parse(latitude.Replace('.', ',')) < -90 || double.Parse(latitude.Replace('.', ',')) > 90)
-                            throw new ArgumentOutOfRangeException("Y (latitude) should be a value between -90 and 90");
-
-                        if (currentlyLoadedMarkers.Contains(location))
-                            continue;
-
-                        markersList += "{name: '";
-                        markersList += location.markerName;
-                        markersList += "', latitude: ";
-                        markersList += latitude.Replace(',', '.');
-                        markersList += ", longitude: ";
-                        markersList += longitude.Replace(',', '.');
-                        markersList += "}, ";
-
-                        currentlyLoadedMarkers.Add(location);
+                        longitude = result.x;
+                        latitude = result.y;
                     }
+                    else
+                    {
+                        notGeocodedLocations.Add(location);
+                        continue;
+                    }
+                }
 
-                    markersList += "]";
+                if (double.Parse(longitude.Replace('.', ',')) < -180 || double.Parse(longitude.Replace('.', ',')) > 180)
+                    throw new ArgumentOutOfRangeException("X (longitude) should be a value between -180 and 180");
+                if (double.Parse(latitude.Replace('.', ',')) < -90 || double.Parse(latitude.Replace('.', ',')) > 90)
+                    throw new ArgumentOutOfRangeException("Y (latitude) should be a value between -90 and 90");
 
-                    //Finally call the Javascript procedure
-                    javascriptIntegrationService.CallProcedure("window.loadMarkers(" + markersList + ")");
+                if (currentlyLoadedMarkers.Contains(location))
+                    continue;
 
-                    LoadMarkersTaskRunning = false;
-                    LoadMarkersTaskStateSwitched?.Invoke(this, false);
-                });
+                markersList += "{name: '";
+                markersList += location.markerName;
+                markersList += "', latitude: ";
+                markersList += latitude.Replace(',', '.');
+                markersList += ", longitude: ";
+                markersList += longitude.Replace(',', '.');
+                markersList += "}, ";
+
+                currentlyLoadedMarkers.Add(location);
             }
+
+            markersList += "]";
+
+            //Finally call the Javascript procedure
+            javascriptIntegrationService.CallProcedure("window.loadMarkers(" + markersList + ")");
         }
 
         /// <summary>
