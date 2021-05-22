@@ -5,7 +5,6 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CefSharp;
 using CefSharp.WinForms;
 using GlobeViewer.Interfaces;
 
@@ -104,10 +103,10 @@ namespace GlobeViewer.Classes
                     }
                 }
 
-                if (double.Parse(longitude.Replace('.', ',')) < -180 || double.Parse(longitude.Replace('.', ',')) > 180)
-                    throw new ArgumentOutOfRangeException("X (longitude) should be a value between -180 and 180");
-                if (double.Parse(latitude.Replace('.', ',')) < -90 || double.Parse(latitude.Replace('.', ',')) > 90)
-                    throw new ArgumentOutOfRangeException("Y (latitude) should be a value between -90 and 90");
+
+                Console.WriteLine("lon: " + longitude);
+                Console.WriteLine("lat: " + latitude);
+
 
                 if (currentlyLoadedMarkers.Contains(location))
                     continue;

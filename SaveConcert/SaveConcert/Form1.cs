@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using GlobeViewer.Classes;
 using GlobeViewer.Interfaces;
@@ -17,8 +18,12 @@ namespace SaveConcert
     public partial class Form1 : Form
     {
         public IGlobeViewer gv = default(IGlobeViewer);
-        public ISetlistAPIManager sam = default(ISetlistAPIManager);
+        public SetlistApi sam;
         private bool taskRunning;
+
+        private Setlists lastSearch;
+        SetListView form;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,43 +31,80 @@ namespace SaveConcert
             gv = new GlobeViewer.Classes.GlobeViewer(panel1);
             gv.BindMarkerClickedEvent(delegate (object sender, string location)
             {
-                MessageBox.Show(location);
+
+                Setlist item = default;
+
+                foreach (var i in lastSearch)
+                {
+                    if (i.Id == location)
+                    {
+                        item = i;
+                    }
+                }
+
+                if (item != null)
+                {
+                    form = new SetListView(item);
+                    this.Invoke(new Action(() => form.Show()));
+                }
             });
 
-            sam = new SetlistAPIManager("TDpswW5K3jP46t26H1XXtPzZRv1xwgX2nGxo");
+            sam = new SetlistApi("7saSG593hLsZ-onjCeYCize9zoMMP59Vf7an");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!taskRunning)
+            if (!string.IsNullOrEmpty(textBox1.Text))
             {
-                Task.Run(() =>
+                if (!taskRunning)
                 {
-                    taskRunning = true;
+                   if (form != null) form.Close();
+                    button1.Enabled = false;
+                    textBox1.Enabled = false;
+                    Task.Run(() =>
+                    {
+                        taskRunning = true;
 
-                    //Set up query
-                    Setlist query = new Setlist();
-                    query.Artist = new Artist("Metallica");
-                    Setlists result = sam.Search(query);
-                    
-                    //Send data to GlobeViewer
-                    IList<(string, string, string, string)> locations = new List<(string MarkerName, string Name, string X, string Y)>();
-                    foreach (Setlist i in result)
-                    {
-                        locations.Add((i.Id, i.Venue.City.State + " " + i.Venue.City.Name + " " + i.Venue.Name, i.Venue.City.Coords.Longitude.ToString(), i.Venue.City.Coords.Latitude.ToString()));
-                    }
-                    try
-                    {
-                        gv.LoadMarkers(locations, out var _);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                        //Set up query
+                        Setlist query = new Setlist();
+                        query.Artist = new Artist(textBox1.Text);
+                        Setlists result = sam.SearchSetlists(query);
+                        lastSearch = result;
 
-                    taskRunning = false;
-                });
+                        this.Invoke(new Action(() =>
+                        {
+                            textBox1.Enabled = true;
+                            button1.Enabled = true;
+                        }));
+                        
+
+                        //Send data to GlobeViewer
+                        IList<(string, string, string, string)> locations = new List<(string MarkerName, string Name, string X, string Y)>();
+                        foreach (Setlist i in result)
+                        {
+                            locations.Add((i.Id, i.Venue.City.State + " " + i.Venue.City.Name + " " + i.Venue.Name, i.Venue.City.Coords.Longitude.ToString(), i.Venue.City.Coords.Latitude.ToString()));
+                        }
+                        try
+                        {
+                            gv.LoadMarkers(locations, out var _);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                        taskRunning = false;
+
+                        
+                    });
+                }
+
             }
+            else
+            {
+                MessageBox.Show("Inserisci qualcosa nel campo");
+            }
+
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace progetto_pcto
 {
@@ -19,7 +18,7 @@ namespace progetto_pcto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 form = new Form1();
+            SaveConcert.Form1 form = new SaveConcert.Form1();
             if (!new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator))
             {
                 ProcessStartInfo info = new ProcessStartInfo();
@@ -40,6 +39,7 @@ namespace progetto_pcto
 
                 }
             }
+
             Application.Run(form);
             form.gv.Dispose();
         }
