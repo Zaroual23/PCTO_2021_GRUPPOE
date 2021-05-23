@@ -4,6 +4,9 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
+
+using System.Threading;
 
 namespace SetlistNet
 {
@@ -128,7 +131,7 @@ namespace SetlistNet
         /// </param>
         /// <param name="page">Page number to fetch.</param>
         /// <returns>A list of matching setlists.</returns>
-        public Setlists SearchSetlists(Setlist searchFields, int page = 1)
+        public List<Setlists> SearchSetlists(Setlist searchFields)
         {
             StringBuilder query = new StringBuilder();
             if (searchFields != null)
@@ -182,8 +185,21 @@ namespace SetlistNet
                 }
             }
 
-            string url = string.Format("/search/setlists?{0}p={1}", query.ToString(), page.ToString());
-            Setlists setlists = Load<Setlists>(url);
+            string url = string.Format("/search/setlists?{0}p=1", query.ToString());
+
+            List<Setlists> setlists = new List<Setlists>();
+            setlists.Add(Load<Setlists>(url));
+
+
+            int cicli = setlists[0].TotalPages;
+
+            for (int i = 2; i < cicli - 1; i++)
+            {
+                url = string.Format("/search/setlists?{0}p={1}", query.ToString(), i.ToString());
+
+                setlists.Add(Load<Setlists>(url));
+            }
+
 
             return setlists;
         }
@@ -336,7 +352,10 @@ namespace SetlistNet
             }
 
             var result = JsonConvert.DeserializeObject<T>(value);
+
+            Thread.Sleep(1000);
             return result;
+
         }
     }
 }

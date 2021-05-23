@@ -21,7 +21,7 @@ namespace SaveConcert
         public SetlistApi sam;
         private bool taskRunning;
 
-        private Setlists lastSearch;
+        private List<Setlists> lastSearch;
         SetListView form;
 
         public Form1()
@@ -36,9 +36,12 @@ namespace SaveConcert
 
                 foreach (var i in lastSearch)
                 {
-                    if (i.Id == location)
+                   foreach (var j in i)
                     {
-                        item = i;
+                        if (j.Id == location)
+                        {
+                            item = j;
+                        }
                     }
                 }
 
@@ -68,7 +71,7 @@ namespace SaveConcert
                         //Set up query
                         Setlist query = new Setlist();
                         query.Artist = new Artist(textBox1.Text);
-                        Setlists result = sam.SearchSetlists(query);
+                        List<Setlists> result = sam.SearchSetlists(query);
                         lastSearch = result;
 
                         this.Invoke(new Action(() =>
@@ -80,10 +83,15 @@ namespace SaveConcert
 
                         //Send data to GlobeViewer
                         IList<(string, string, string, string)> locations = new List<(string MarkerName, string Name, string X, string Y)>();
-                        foreach (Setlist i in result)
+                        
+                        foreach (Setlists j in result)
                         {
-                            locations.Add((i.Id, i.Venue.City.State + " " + i.Venue.City.Name + " " + i.Venue.Name, i.Venue.City.Coords.Longitude.ToString(), i.Venue.City.Coords.Latitude.ToString()));
+                            foreach (Setlist i in j)
+                            {
+                                locations.Add((i.Id, i.Venue.City.State + " " + i.Venue.City.Name + " " + i.Venue.Name, i.Venue.City.Coords.Longitude.ToString(), i.Venue.City.Coords.Latitude.ToString()));
+                            }
                         }
+                       
                         try
                         {
                             gv.LoadMarkers(locations, out var _);
